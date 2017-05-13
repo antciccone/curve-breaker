@@ -28,3 +28,7 @@
 .navbar-brand>img {
   margin-top: -10px;
 }
+
+.con-login {
+  width: 70% !important;
+}

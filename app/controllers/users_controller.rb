@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.roles << Role.find_by_name("registered")
+      # @user.roles << Role.find_by_name("registered")
       flash[:success] = "Logged in as #{@user.name}"
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       flash[:danger] = "Must enter info in all fields."
       redirect_to new_user_path
@@ -30,4 +30,10 @@ class UsersController < ApplicationController
     user.update(user_params)
     redirect_to user_path(user)
   end
-end 
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+end
