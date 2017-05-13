@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+
+.navbar-inverse {
+  border: none !important;
+  background-color: #F3F3F3 !important;
+}
+
+
+.curve-logo {
+  width: 40%;
+}
+
+.navbar-brand>img {
+  margin-top: -10px;
+}
