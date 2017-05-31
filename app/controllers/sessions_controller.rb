@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if @user and @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "You Successfully Logged in!"
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       flash[:danger] = "Email and password don't match"
       redirect_to login_path
