@@ -14,44 +14,24 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Grade</th>
+                    <th>ACT</th>
+                    <th>SAT</th>
                 </tr>
             </thead>
             <tbody>
+              <% @user.each do |student| %>
                 <tr>
-                    <td>Anthony Ciccone</td>
-                    <td>aciccone@bu.edu</td>
+                    <td><%= link_to student.name, admin_student_path(student) %></td>
+                    <td><%= student.email %></td>
                     <td>9735257892</td>
                     <td>42 brookside drive sparta nj</td>
-                    <td>12</td>
+                    <td><%= student.grade %></td>
+                    <% student.scores.each do |score| %>
+                    <td> <%= score.sat %></td>
+                    <td> <%= score.act %></td>
+                    <% end %>
                 </tr>
-                <tr>
-                    <td>Anthony Ciccone</td>
-                    <td>aciccone@bu.edu</td>
-                    <td>9735257892</td>
-                    <td>42 brookside drive sparta nj</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>Anthony Ciccone</td>
-                    <td>aciccone@bu.edu</td>
-                    <td>9735257892</td>
-                    <td>42 brookside drive sparta nj</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>Anthony Ciccone</td>
-                    <td>aciccone@bu.edu</td>
-                    <td>9735257892</td>
-                    <td>42 brookside drive sparta nj</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>Anthony Ciccone</td>
-                    <td>aciccone@bu.edu</td>
-                    <td>9735257892</td>
-                    <td>42 brookside drive sparta nj</td>
-                    <td>12</td>
-                </tr>
+                <% end %>
             </tbody>
         </table>
     </div>

@@ -9,6 +9,13 @@ class Seed
       password_digest: "test"
       )
       puts "#{user.name} #{user.email} #{user.grade}"
+      Score.create!(
+        act: rand(10..36),
+        sat: rand(900..1600),
+        practice_sat: "none",
+        practice_act: "non",
+        user_id: user.id
+      )
     end
   end
 
