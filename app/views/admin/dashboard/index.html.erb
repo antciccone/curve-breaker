@@ -24,7 +24,7 @@
                     <td><%= link_to student.name, admin_student_path(student) %></td>
                     <td><%= student.email %></td>
                     <td>9735257892</td>
-                    <td>42 brookside drive sparta nj</td>
+                    <td><%= student.address%></td>
                     <td><%= student.grade %></td>
                     <% student.scores.each do |score| %>
                     <td> <%= score.sat %></td>
