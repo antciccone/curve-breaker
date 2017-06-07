@@ -13,3 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.form-control').on('keyup', function(){
+    searchStudent(this)
+  })
+})
+
+function searchStudent(input) {
+  var filter = input.value.toUpperCase();
+  var search = $(".student-name")
+  for (i = 0; i < search.length; i++) {
+    td = search[i]
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        search[i].parentElement.style.display = "";
+      } else {
+      search[i].parentElement.style.display = "none";
+      }
+    }
+  }
+}

@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   has_many :scores
+  has_many :lessons 
 end

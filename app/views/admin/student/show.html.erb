@@ -1,123 +1,42 @@
 <%= render partial: 'shared/nav' %>
 
 <div id="page-wrapper">
-      <div class="row">
-          <div class="col-lg-12">
-              <h1 class="page-header"> <%= @student.name %> </h1>
-          </div>
-      </div>
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Phone</th>
-              <th>Grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td> <%= @student.email %></td>
-              <td> <%= @student.address %></td>
-              <td> <%= @student.phone %></td>
-              <td> <%= @student.grade %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-      <div class="row">
-          <div class="col-lg-12">
-              <h3 class="page-header">Scores</h3>
-          </div>
-      </div>
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-          <thead>
-            <tr>
-              <th>ACT Score</th>
-              <th>SAT Score</th>
-              <th>SAT Math</th>
-              <th>PSAT English</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @student.scores.each do |score| %>
-            <tr>
-              <td> <%= score.act %></td>
-              <td> <%= score.sat %></td>
-              <td> <%= score.sat_math %></td>
-              <td> <%= score.sat %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-      <div class="row">
-          <div class="col-lg-12">
-              <h3 class="page-header">Practice Scores</h3>
-          </div>
-      </div>
-    <div class="row">
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-          <thead>
-            <tr>
-              <th>PSAT Math</th>
-              <th>SAT</th>
-              <th>SAT Math</th>
-              <th>SAT English</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @student.scores.each do |score| %>
-            <tr>
-              <td> <%= score.sat %></td>
-              <td> <%= score.act %></td>
-              <td> <%= score.sat_math %></td>
-              <td> <%= score.sat_english %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Colleges</h3>
-        </div>
-    </div>
   <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>College Name</th>
-            <th>SAT Scores Needed</th>
-            <th>PSAT Scored Needed</th>
-            <th>Applied?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td> Dummy Data</td>
-            <td> Dummy Data</td>
-            <td> Dummy Data</td>
-            <td> Dummy Data</td>
-          </tr>
-          <tr>
-            <td> Dummy Data</td>
-            <td> Dummy Data</td>
-            <td> Dummy Data</td>
-            <td> Dummy Data</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="col-lg-12">
+          <h1 class="page-header"> <%= @student.name %> </h1>
+      </div>
   </div>
+  <div class=" well well-sm  bg-white borderZero">
+       <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
+           <label href="#profile" data-toggle="tab" class="btn btn-default next font-small semiBold" style="font-size:12px; border-radius:0;">
+              Profile
+           </label>
+           <label  href="#tutoring" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
+               Tutoring Hours
+           </label>
+           <label href="#study" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+               Study Guides
+           </label>
+           <label  href="#education" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+              Education
+           </label>
+           <label href="#skills" data-toggle="tab"  class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;">
+               Skills
+           </label>
+       </div>
+   </div>
+     <div id="myTabContent" class="tab-content">
+       <%= render partial: 'admin/student/profile' %>
+     <div  role="tabpanel" class="tab-pane" id="tutoring">
+       <%= render partial: 'admin/student/tutoring' %>
+     </div>
+     <div  role="tabpanel" class="tab-pane" id="study">
+       <p class="text-center">Study Guides</p>
+     </div>
+      <div  role="tabpanel" class="tab-pane" id="skills">
+       <p class="text-center"> Python, javascript, php, golang, mysql, mongodb, django, nodejs, express, reddis, phalcon, gokit, microservices, machine learning</p>
+     </div>
 </div>
+</div>
+
 <%= render partial: 'shared/footer' %>
