@@ -1,0 +1,42 @@
+<%= render partial: 'shared/nav' %>
+
+<div id="page-wrapper">
+  <div class="row">
+      <div class="col-lg-12">
+          <h1 class="page-header"> <%= @student.name %> </h1>
+      </div>
+  </div>
+  <div class=" well well-sm  bg-white borderZero">
+       <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
+           <label href="#profile" data-toggle="tab" class="btn btn-default next font-small semiBold" style="font-size:12px; border-radius:0;">
+              Profile
+           </label>
+           <label  href="#tutoring" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
+               Tutoring Hours
+           </label>
+           <label href="#study" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+               Study Guides
+           </label>
+           <label  href="#education" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+              Education
+           </label>
+           <label href="#skills" data-toggle="tab"  class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;">
+               Skills
+           </label>
+       </div>
+   </div>
+     <div id="myTabContent" class="tab-content">
+       <%= render partial: 'admin/student/profile' %>
+     <div  role="tabpanel" class="tab-pane" id="tutoring">
+       <%= render partial: 'admin/student/tutoring' %>
+     </div>
+     <div  role="tabpanel" class="tab-pane" id="study">
+       <p class="text-center">Study Guides</p>
+     </div>
+      <div  role="tabpanel" class="tab-pane" id="skills">
+       <p class="text-center"> Python, javascript, php, golang, mysql, mongodb, django, nodejs, express, reddis, phalcon, gokit, microservices, machine learning</p>
+     </div>
+</div>
+</div>
+
+<%= render partial: 'shared/footer' %>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
+    resources :student, only: [:show]
+    resources :teachers, only: [:index]
   end
 
   get '/login', to: 'sessions#new'
