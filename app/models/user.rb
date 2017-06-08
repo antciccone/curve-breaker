@@ -3,5 +3,11 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   has_many :scores
-  has_many :lessons 
+  has_many :lessons
+  has_many :user_roles
+  has_many :roles, through: :user_roles
+
+  def super_admin?
+    roles.exists?(name: "super-admin")
+  end
 end

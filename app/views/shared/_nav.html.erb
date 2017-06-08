@@ -16,7 +16,7 @@
                     <li><a href=""><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="/logout" data-method="delete"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a data-method="delete"><%=link_to "Logout", logout_path, method: :delete %></a>
                     </li>
                 </ul>
             </li>

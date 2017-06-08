@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607182304) do
+ActiveRecord::Schema.define(version: 20170608001444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20170607182304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "scores", force: :cascade do |t|
@@ -38,6 +44,15 @@ ActiveRecord::Schema.define(version: 20170607182304) do
     t.index ["user_id"], name: "index_scores_on_user_id", using: :btree
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -50,4 +65,6 @@ ActiveRecord::Schema.define(version: 20170607182304) do
   end
 
   add_foreign_key "lessons", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

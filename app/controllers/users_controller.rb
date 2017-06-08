@@ -7,10 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # @user.roles << Role.find_by_name("registered")
       flash[:success] = "Logged in as #{@user.name}"
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to admin_dashboard_index_path
     else
       flash[:danger] = "Must enter info in all fields."
       redirect_to new_user_path
