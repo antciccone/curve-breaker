@@ -10,12 +10,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:session][:email])
-    if @user and @user.authenticate(params[:session][:password])
+    if @user and @user.authenticate(params[:session][:password_digest])
       session[:user_id] = @user.id
-      flash[:success] = "You Successfully Logged in!"
-      redirect_to user_path(@user)
+      redirect_to admin_dashboard_index_path
     else
-      flash[:danger] = "Email and password don't match"
       redirect_to login_path
     end
   end
@@ -23,7 +21,7 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     flash[:success] = "You Successfully Logged out!"
-    redirect_to root_path
+    redirect_to login_path
   end
 
 end
