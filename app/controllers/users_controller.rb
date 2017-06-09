@@ -25,14 +25,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    user.update(user_params)
-    redirect_to user_path(user)
+    User.find(params[:id]).update(user_params)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password_digest, :grade, :address, :phone)
   end
 end

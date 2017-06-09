@@ -39,7 +39,17 @@ class Seed
       )
     end
   end
-
+  def self.teacher
+    10.times do |i|
+      Teacher.create!(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        phone: Faker::PhoneNumber.cell_phone,
+        title: "Teacher"
+      )
+    end
+  end
 end
 
 Seed.start
+Seed.teacher

@@ -1,11 +1,13 @@
 class Permissions
   def initialize(user, controller, action)
-    @user = user
+    @user = user || User.new
     @controller = controller
     @action = action
   end
 
   def allow?
+#    require 'pry';binding.pry
+
     if user.super_admin?
       super_admin_permissions
     else
@@ -20,10 +22,11 @@ class Permissions
       return true if controller == "admin/dashboard" && action.in?(%w(index ))
       return true if controller == "admin/student" && action.in?(%w(show ))
       return true if controller == "sessions" && action.in?(%w(new create destroy guest))
+      return true if controller == "admin/teachers" && action.in?(%w( index))
     end
 
     def guest_permissions
       return true if controller == "sessions" && action.in?(%w(new create destroy guest))
-      return true if controller == "users" && action.in?(%(new create))
+      return true if controller == "users" && action.in?(%(new create show edit update))
     end
 end

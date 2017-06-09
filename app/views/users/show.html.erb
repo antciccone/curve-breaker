@@ -1,1 +1,86 @@
 <%= render partial: 'shared/logged_in_nav' %>
+<div class="container-fluid">
+<div class=" well well-sm  bg-white borderZero">
+     <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
+         <label  href="#account" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
+           Account information
+         </label>
+         <label href="#study" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+             Study Guides
+         </label>
+         <label  href="#education" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+            Something else?
+         </label>
+         <label href="#something" data-toggle="tab"  class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;">
+           Account information
+         </label>
+     </div>
+ </div>
+   <div id="myTabContent" class="tab-content">
+   <div  role="tabpanel" class="tab-pane" id="tutoring">
+     this is for turoeing hours
+   </div>
+   <div  role="tabpanel" class="tab-pane" id="study">
+     <p class="text-center">Study Guides</p>
+   </div>
+    <div  role="tabpanel" class="tab-pane active" id="account">
+      <div class="row">
+      <div class="col-md-6" style="margin: auto; float: none">
+      <div class="profile-sidebar">
+				<div class="profile-userpic">
+					<img src="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="img-responsive" alt="">
+				</div>
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name" contenteditable="true">
+            <%= current_user.name %>
+					</div>
+					<div class="profile-usertitle-job">
+					</div>
+				</div>
+				<div class="profile-userbuttons">
+					<center><button type="button" class="btn btn-success btn-sm">Student</button></center>
+				</div>
+				<div class="profile-usermenu">
+					<ul class="nav" id="<%= current_user.id %>" >
+						<li >
+              <a href="#"></a>
+              <div class="information">
+							<i class="glyphicon glyphicon-phone"></i>
+              <span id="phone" class="edit-profile" contenteditable="true"><%= current_user.phone %></span>
+              </div>
+						</li>
+						<li>
+							<a href="#"></a>
+                <div class="information">
+							<i class="glyphicon glyphicon-envelope"></i>
+              <span  id="email" class="edit-profile" contenteditable="true"><%= current_user.email %></span>
+            </div>
+						</li>
+            <li>
+              <a href="#"></a>
+                <div class="information">
+							<i class="glyphicon glyphicon-home"></i>
+              <span id="address" class="edit-profile" contenteditable="true"><%= current_user.address %></span>
+            </div>
+						</li>
+            <li>
+              <a href="#"></a>
+              <div class="information">
+							<i class="glyphicon glyphicon-book"></i>
+              <span id="grade" class="edit-profile" contenteditable="true"><%= current_user.grade %></span>
+            </div>
+						</li>
+          </div>
+					</ul>
+				</div>
+			</div>
+    </div>
+  </div>
+   </div>
+</div>
+</div>
+<%= render partial: 'shared/footer' %>
+
+<form class="" action="index.html" method="post">
+
+</form>

@@ -24,8 +24,6 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Grade</th>
-                    <th>ACT</th>
-                    <th>SAT</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +34,6 @@
                     <td>9735257892</td>
                     <td><%= student.address%></td>
                     <td><%= student.grade %></td>
-                    <% student.scores.each do |score| %>
-                    <td> <%= score.sat %></td>
-                    <td> <%= score.act %></td>
-                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
