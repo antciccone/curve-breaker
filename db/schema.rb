@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609145848) do
+ActiveRecord::Schema.define(version: 20170614220622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170609145848) do
     t.string   "grade"
     t.string   "address"
     t.string   "phone"
+    t.string   "status"
   end
 
   add_foreign_key "lessons", "users"

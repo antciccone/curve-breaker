@@ -8,7 +8,8 @@ class Seed
       grade: rand(5..12).to_s + "th",
       password_digest: "test",
       phone: Faker::PhoneNumber.cell_phone,
-      address: "#{Faker::Address.street_name}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip}"
+      address: "#{Faker::Address.street_name}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip}", 
+      status: ["lead", "current", "past"].sample
       )
       puts "#{user.name} #{user.email} #{user.grade}"
       Score.create!(
