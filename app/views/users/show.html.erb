@@ -1,4 +1,7 @@
 <%= render partial: 'shared/logged_in_nav' %>
+<% if current_user.roles.pluck(:name).include?("teacher") %>
+<%= render partial: 'teacher_show' %>
+<% else %>
 <div class="container-fluid">
 <div class=" well well-sm  bg-white borderZero">
      <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
@@ -81,6 +84,4 @@
 </div>
 <%= render partial: 'shared/footer' %>
 
-<form class="" action="index.html" method="post">
-
-</form>
+<% end %>

@@ -10,5 +10,8 @@ class User < ApplicationRecord
   def super_admin?
     roles.exists?(name: "super-admin")
   end
-  # create a role called teacher
+
+  def teacher?
+    roles.exists?(name: "teacher")
+  end
 end

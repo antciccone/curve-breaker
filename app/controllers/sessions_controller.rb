@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    require "pry"; binding.pry
     @user = User.find_by(email: params[:session][:email])
     if @user and @user.authenticate(params[:session][:password_digest])
       session[:user_id] = @user.id
