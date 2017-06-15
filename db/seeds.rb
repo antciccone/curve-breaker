@@ -8,7 +8,8 @@ class Seed
       grade: rand(5..12).to_s + "th",
       password_digest: "test",
       phone: Faker::PhoneNumber.cell_phone,
-      address: "#{Faker::Address.street_name}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip}"
+      address: "#{Faker::Address.street_name}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip}", 
+      status: ["lead", "current", "past"].sample
       )
       puts "#{user.name} #{user.email} #{user.grade}"
       Score.create!(
@@ -39,7 +40,17 @@ class Seed
       )
     end
   end
-
+  def self.teacher
+    10.times do |i|
+      Teacher.create!(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        phone: Faker::PhoneNumber.cell_phone,
+        title: "Teacher"
+      )
+    end
+  end
 end
 
 Seed.start
+Seed.teacher
