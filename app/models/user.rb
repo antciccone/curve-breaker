@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :teacher_students
   has_many :teachers, through: :teacher_students
 
+  attr_reader :role
+
   def super_admin?
     roles.exists?(name: "super-admin")
   end
