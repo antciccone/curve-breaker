@@ -7,4 +7,12 @@ class User < ApplicationRecord
   has_many :roles
   has_many :relationships
 
+
+  def super_admin?
+    roles.exists?(name: "super-admin")
+  end
+
+  def teacher?
+    roles.exists?(name: "teacher")
+  end
 end
