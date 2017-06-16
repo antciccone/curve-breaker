@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170616004950) do
+ActiveRecord::Schema.define(version: 20170616010204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,15 +53,6 @@ ActiveRecord::Schema.define(version: 20170616004950) do
     t.index ["user_id"], name: "index_scores_on_user_id", using: :btree
   end
 
-  create_table "student_teachers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "teacher_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["teacher_id"], name: "index_student_teachers_on_teacher_id", using: :btree
-    t.index ["user_id"], name: "index_student_teachers_on_user_id", using: :btree
-  end
-
   create_table "teachers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -70,6 +60,15 @@ ActiveRecord::Schema.define(version: 20170616004950) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_user_roles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,6 +86,6 @@ ActiveRecord::Schema.define(version: 20170616004950) do
   add_foreign_key "lessons", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "roles", "users"
-  add_foreign_key "student_teachers", "teachers"
-  add_foreign_key "student_teachers", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

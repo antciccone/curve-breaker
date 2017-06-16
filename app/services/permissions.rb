@@ -6,8 +6,6 @@ class Permissions
   end
 
   def allow?
-#    require 'pry';binding.pry
-
     if user.super_admin?
       super_admin_permissions
     elsif user.teacher?

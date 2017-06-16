@@ -68,7 +68,9 @@
    </div>
    </div>
    <div  role="tabpanel" class="tab-pane" id="students">
-     list the tutors students
+     <% current_user.relationships.each do |student| %>
+     <%= student.user_id %>
+     <% end %>
    </div>
  </div>
  </div>
