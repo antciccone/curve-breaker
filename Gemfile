@@ -19,29 +19,19 @@ gem 'faraday'
 gem 'faker'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'pry'
-  #duh
   gem 'launchy'
-  #because restarting the server every time sucks
   gem 'rspec-rails'
-  #testing suite
   gem 'capybara'
-  #headless browser feature testing
   gem 'factory_girl_rails'
-  #creating objects for tests
   gem 'simplecov'
-  #so we can tell what's being hit by tests
   gem 'database_cleaner'
-  #keep it clean
 end
 
 group :test do
   gem 'vcr'
-  #for testing our api's - avoid hitting rate limits
   gem 'webmock'
-  #used in conjuction with vcr to intercept out web calls
 end
 
   group :development do

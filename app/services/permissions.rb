@@ -23,10 +23,12 @@ class Permissions
       return true if controller == "admin/student" && action.in?(%w(show new ))
       return true if controller == "sessions" && action.in?(%w(new create destroy guest))
       return true if controller == "admin/teachers" && action.in?(%w( index))
+      return true if controller == "admin/users" && action.in?(%w(new create show))
     end
 
     def teacher_permissions
       return true if controller == "users" && action.in?(%(show edit update))
+      return true if controller == "admin/users" && action.in?(%w(show))
     end
 
     def guest_permissions

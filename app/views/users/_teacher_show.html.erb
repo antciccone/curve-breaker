@@ -68,9 +68,9 @@
    </div>
    </div>
    <div  role="tabpanel" class="tab-pane" id="students">
-     <% current_user.relationships.each do |student| %>
-     <%= student.user_id %>
-     <% end %>
+    <% Teacher.find_by_email(current_user.email).users.each do |student| %>
+      <%= link_to student.name, admin_user_path(student) %>
+      <% end %>
    </div>
  </div>
  </div>

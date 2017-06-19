@@ -5,11 +5,17 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save && create_role
+    if @user.save && create_role(@user)
       redirect_to admin_dashboard_index_path
     else
       redirect_to new_user_path
     end
+  end
+
+  def show
+    if Teacher.find_by_email(current_user.email).users.pluck(:id).include?(params[:id].to_i)
+    @user  = User.find(params[:id])
+    end 
   end
 
   private
@@ -18,8 +24,10 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :grade, :address, :phone, :status)
   end
 
-  def create_role
+  def create_role(user)
     if params[:user][:role] == "teacher"
-      Teacher.create(name: params[:user][:name])
+      user.roles.create(name: 'teacher')
+      Teacher.create(name: params[:user][:name], email: params[:user][:email], phone: params[:user][:phone])
+    end
   end
 end
