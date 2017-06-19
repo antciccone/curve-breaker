@@ -24,6 +24,7 @@ class Permissions
       return true if controller == "sessions" && action.in?(%w(new create destroy guest))
       return true if controller == "admin/teachers" && action.in?(%w( index))
       return true if controller == "admin/users" && action.in?(%w(new create show))
+      return true if controller == "admin/pairing" && action.in?(%w(index destroy new create show))
     end
 
     def teacher_permissions
