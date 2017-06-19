@@ -37,16 +37,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="/admin/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/admin/teachers"><i class="fa fa-users fa-fw"></i> Staff</a>
-                    </li>
-                    <li>
-                        <a href="/admin/users/new"><i class="fa fa-plus fa-fw"></i> Create Student/Teacher Login</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Pair a Teacher & Student</a>
+                        <a href="/users/<%= current_user.id %>"><i class="fa fa-dashboard fa-fw"></i>My Dashboard</a>
                     </li>
                 </ul>
             </div>

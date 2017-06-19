@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :student, only: [:show, :new]
     resources :teachers, only: [:index]
     resources :users, only: [:new, :create, :show]
+    resources :pairing, only: [:index, :new, :create, :update, :destroy, :show]
   end
 
   get '/login', to: 'sessions#new'
