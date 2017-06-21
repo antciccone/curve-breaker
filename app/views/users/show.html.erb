@@ -1,5 +1,4 @@
 <%= render partial: 'shared/logged_in_nav' %>
-<%  %>
 <% if current_user.roles.pluck(:name).include?("teacher") %>
 <%= render partial: 'teacher_show' %>
 <% else %>

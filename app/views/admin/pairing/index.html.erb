@@ -60,7 +60,7 @@
             <% @teachers.each do |teacher| %>
               <tr>
                   <td><label class="form-check-label">
-                  <input type="checkbox" class="form-check-input">
+                  <input id="<%= teacher.id %>" type="checkbox" class="form-check-input">
                   </label>
                  <%= teacher.name %></td>
                   <td>50$</td>

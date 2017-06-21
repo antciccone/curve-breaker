@@ -34,6 +34,7 @@ class Permissions
 
     def guest_permissions
       return true if controller == "sessions" && action.in?(%w(new create destroy guest))
-      return true if controller == "users" && action.in?(%(new create show edit update))
+      return true if controller == "users" && action.in?(%w(new create show edit update))
+      return true if controller == "admin/pairing" && action.in?(%w(create))
     end
 end
