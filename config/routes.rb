@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resources :teachers, only: [:index]
     resources :users, only: [:new, :create, :show]
     resources :pairing, only: [:index, :new, :create, :update, :destroy, :show]
-    get '/current-pairings', to: 'admin/pairing#current-pairings'
   end
 
+  get '/admin/current-pairings', to: 'admin/pairing#current_pairings'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
