@@ -1,0 +1,82 @@
+<h3>Total Tutoring Hours: 12</h3>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="timeline-centered">
+          <% @user.lessons.each do |lesson| %>
+          <article class="timeline-entry">
+              <div class="timeline-entry-inner">
+                  <div class="timeline-icon bg-success">
+                      <i class="entypo-feather"></i>
+                  </div>
+                  <div class="timeline-label">
+                      <h2>
+                          <a href="#">Teacher: Anthony Ciccone</a> |
+                          <span>Date: Tuesday, March 31st</span>
+                      </h2>
+                      <h5>Notes/Topics Covered</h5>
+                      <p><%= lesson.notes %>
+                      </p>
+                  </div>
+              </div>
+          </article>
+          <% end %>
+          <article class="timeline-entry">
+              <div class="timeline-entry-inner">
+                  <div class="timeline-icon bg-success">
+                      <i class="entypo-feather"></i>
+                  </div>
+                  <div class="timeline-label">
+                      <h2>
+                          <a href="#">Teacher: Anthony Ciccone</a> |
+                          <span>Date: Tuesday, March 31st</span>
+                      </h2>
+                      <h5>Notes/Topics Covered</h5>
+                      <p>sample notes go here
+                      </p>
+                  </div>
+              </div>
+          </article>
+          <article class="timeline-entry">
+              <div class="timeline-entry-inner">
+                  <div class="timeline-icon bg-success">
+                      <i class="entypo-feather"></i>
+                  </div>
+                  <div class="timeline-label">
+                      <h2>
+                          <a href="#">Teacher: Anthony Ciccone</a>|
+                          <span>Date: Tuesday, March 31st</span>
+                      </h2>
+                      <h5>Notes/Topics Covered</h5>
+                      <p>Sample notes go here
+                      </p>
+                  </div>
+              </div>
+          </article>
+          <article class="timeline-entry">
+              <div class="timeline-entry-inner">
+                  <div class="timeline-icon bg-success">
+                      <i class="entypo-feather"></i>
+                  </div>
+                  <div class="timeline-label">
+                      <h2>
+                          <a href="#">Teacher: Anthony Ciccone</a>
+                          <span>Date: Tuesday, March 31st</span>
+                      </h2>
+                      <h5>Notes/Topics Covered</h5>
+                      <p>Sample notes go here
+                      </p>
+                  </div>
+              </div>
+          </article>
+            <article class="timeline-entry begin">
+                <div class="timeline-entry-inner">
+                    <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                        <i class="entypo-flight"></i>
+                        +
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

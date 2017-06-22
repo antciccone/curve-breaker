@@ -4,8 +4,11 @@ class User < ApplicationRecord
 
   has_many :scores
   has_many :lessons
-  has_many :user_roles
-  has_many :roles, through: :user_roles
+  has_many :roles
+  has_many :teacher_students
+  has_many :teachers, through: :teacher_students
+
+  attr_reader :role
 
   def super_admin?
     roles.exists?(name: "super-admin")

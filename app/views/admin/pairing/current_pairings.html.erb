@@ -1,0 +1,40 @@
+<%= render partial: 'shared/nav' %>
+<div id="page-wrapper">
+  <br>
+  <div class="row">
+    <% @teachers.each do |teacher| %>
+    <div class="col-md-6 current-pairing-row" style="padding: 2px;">
+      <div class="pane">
+          <table class="table table-bordered table-hover table-striped">
+
+          <thead>
+            <tr>
+              <td colspan="5">Teacher <%= teacher.name %></td>
+            </tr>
+              <tr>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Grade</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <% teacher.users.each do |student|  %>
+          <tbody>
+              <tr>
+                  <td><%= student.name %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.grade %></td>
+                  <td>Edit</td>
+                  <td>Delete</td>
+              </tr>
+              <% end %>
+          </tbody>
+      </table>
+    </div>
+
+    </div>
+    <% end %>
+  </div>
+
+</div>

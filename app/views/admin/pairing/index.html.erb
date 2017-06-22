@@ -1,0 +1,77 @@
+<%= render partial: 'shared/nav' %>
+<div id="page-wrapper">
+  <button type="button" id="create-match" name="button">create match</button>
+  <div class="row">
+    <div class="col-lg-6">
+      <h1 class="page-header">Students</h1>
+      <div class="input-group custom-search-form">
+          <input type="text" class="form-control search-student" placeholder="Search Student Name...">
+          <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+              <i class="fa fa-search"></i>
+          </button>
+      </span>
+      </div>
+      <br>
+      <table class="table table-bordered table-hover table-striped">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Grade</th>
+                  <th>Status</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @students.each do |student| %>
+              <tr>
+                  <td class="student-name-pairing">
+                    <label class="form-check-label">
+                    <input id="<%= student.id %>"type="checkbox" class="form-check-input">
+                    <%= link_to student.name, admin_student_path(student) %>
+                  </label>
+                  </td>
+                  <td><%= student.email %></td>
+                  <td><%= student.grade %></td>
+                  <td><%= student.status %></td>
+              </tr>
+              <% end %>
+          </tbody>
+      </table>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="page-header">Teachers</h1>
+      <div class="input-group custom-search-form">
+          <input type="text" class="form-control search-teacher" placeholder="Search Teacher Name...">
+          <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+              <i class="fa fa-search"></i>
+          </button>
+      </span>
+      </div>
+      <br>
+      <table class="table table-bordered table-hover table-striped">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Hourly Rate</th>
+                  <th>Subjects</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @teachers.each do |teacher| %>
+              <tr>
+                  <td class="teacher-pairing"><label class="form-check-label">
+                  <input id="<%= teacher.id %>" type="checkbox" class="form-check-input">
+                  </label>
+                 <%= teacher.name %></td>
+                  <td>50$</td>
+                  <td> History/SAT</td>
+              </tr>
+              <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
