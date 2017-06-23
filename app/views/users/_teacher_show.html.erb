@@ -1,76 +1,135 @@
 <div class="container-fluid">
+    <div class=" well well-sm  bg-white borderZero">
+        <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
+            <label href="#account" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
+                Account information
+            </label>
+            <label href="#students" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;">
+                My Students
+            </label>
+        </div>
+    </div>
+    <div id="myTabContent" class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="account">
+            <div class="row">
+                <div class="col-md-6" style="margin: auto; float: none">
+                    <div class="profile-sidebar">
+                        <div class="profile-userpic">
+                            <img src="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="img-responsive" alt="">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name" >
+                                <%= current_user.name %>
+                            </div>
+                            <div class="profile-usertitle-job"></div>
+                        </div>
+                        <div class="profile-userbuttons">
+                            <center>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Edit Info</button>
+                            </center>
+                        </div>
+                        <div class="profile-usermenu">
+                            <ul class="nav" id="<%= current_user.id %>">
+                                <li >
+                                    <a href="#"></a>
+                                    <div class="information">
+                                        <i class="glyphicon glyphicon-phone"></i>
+                                        <span id="phone" class="edit-profile" ><%= current_user.phone %></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                    <div class="information">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                        <span id="email" class="edit-profile" ><%= current_user.email %></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                    <div class="information">
+                                        <i class="glyphicon glyphicon-usd"></i>
+                                        <span id="rate" class="edit-profile" > <%= current_user.rate %> </span>
+                                    </div>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit Your profile</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="panel-body new-user">
+                                  <%= form_for @user do |f| %>
+                                    <div class="form-group">
+                                      <%= f.label :name, class: "control-lable col-md-4 required-field" %>
+                                      <%= f.text_field :name, class: "input-md textinput textInput form-control" %>
+                                    </div>
+                                    <div class="form-group">
+                                      <%= f.label :email, class: "control-lable col-md-4 required-field" %>
+                                      <%= f.text_field :email, class: "input-md textinput textInput form-control" %>
+                                    </div>
+                                    <div class="form-group">
+                                      <%= f.label :phone, class: "control-lable col-md-4 required-field" %>
+                                      <%= f.text_field :phone, class: "input-md textinput textInput form-control" %>
+                                    </div>
+                                    <div class="form-group">
+                                      <%= f.label :rate, class: "control-lable col-md-4 required-field" %>
+                                      <%= f.text_field :rate, class: "input-md textinput textInput form-control" %>
+                                    </div>
+                                    <div class="form-group">
+                                      <%= f.submit class: "btn btn-warning"%>
+                                    </div>
+                                  <% end %>
+                                </div>
+                              </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="students">
+            <div class="row">
+              <% Teacher.find_by_email(current_user.email).teacher_students.each do |student|%>
+              <div class="col-md-6 current-pairing-row" style="padding: 2px;">
+                <div class="pane">
+                    <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <td colspan="5">Status <%= student.status %> </td>
+                      </tr>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= student.find_name %></td>
+                            <td><%= student.find_email %></td>
+                            <td><%= student.find_grade %></td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
 
-<div class=" well well-sm  bg-white borderZero">
-     <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
-         <label  href="#account" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
-           Account information
-         </label>
-         <label  href="#students" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
-           My Students
-         </label>
-         <label href="#something" data-toggle="tab"  class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;">
-           Account information
-         </label>
-     </div>
-   </div>
-   <div id="myTabContent" class="tab-content">
-   <div  role="tabpanel" class="tab-pane active" id="account">
-     <div class="row">
-     <div class="col-md-6" style="margin: auto; float: none">
-     <div class="profile-sidebar">
-       <div class="profile-userpic">
-         <img src="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="img-responsive" alt="">
-       </div>
-       <div class="profile-usertitle">
-         <div class="profile-usertitle-name" contenteditable="true">
-           <%= current_user.name %>
-         </div>
-         <div class="profile-usertitle-job">
-         </div>
-       </div>
-       <div class="profile-userbuttons">
-         <center><button type="button" class="btn btn-success btn-sm">Student</button></center>
-       </div>
-       <div class="profile-usermenu">
-         <ul class="nav" id="<%= current_user.id %>" >
-           <li >
-             <a href="#"></a>
-             <div class="information">
-             <i class="glyphicon glyphicon-phone"></i>
-             <span id="phone" class="edit-profile" contenteditable="true"><%= current_user.phone %></span>
-             </div>
-           </li>
-           <li>
-             <a href="#"></a>
-               <div class="information">
-             <i class="glyphicon glyphicon-envelope"></i>
-             <span  id="email" class="edit-profile" contenteditable="true"><%= current_user.email %></span>
-           </div>
-           </li>
-           <li>
-             <a href="#"></a>
-               <div class="information">
-             <i class="glyphicon glyphicon-home"></i>
-             <span id="address" class="edit-profile" contenteditable="true"><%= current_user.address %></span>
-           </div>
-           </li>
-           <li>
-             <a href="#"></a>
-             <div class="information">
-             <i class="glyphicon glyphicon-book"></i>
-             <span id="grade" class="edit-profile" contenteditable="true"><%= current_user.grade %></span>
-           </div>
-           </li>
-         </div>
-         </ul>
-       </div>
-     </div>
-   </div>
-   </div>
-   <div  role="tabpanel" class="tab-pane" id="students">
-    <% Teacher.find_by_email(current_user.email).users.each do |student| %>
-      <%= link_to student.name, admin_user_path(student) %>
-      <% end %>
-   </div>
- </div>
- </div>
+              </div>
+              <% end %>
+            </div>
+
+        </div>
+    </div>
+</div>

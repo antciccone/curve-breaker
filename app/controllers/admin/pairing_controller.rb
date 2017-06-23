@@ -6,7 +6,7 @@ class Admin::PairingController< ApplicationController
   end
 
   def create
-    @teacher_student = TeacherStudent.new(user_id: User.find(params[:student]).id, teacher_id: Teacher.find(params[:teacher]).id)
+    @teacher_student = TeacherStudent.new(user_id: User.find(params[:student]).id, teacher_id: Teacher.find(params[:teacher]).id, role: "active")
     @teacher_student.save
   end
 
