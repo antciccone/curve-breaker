@@ -13,7 +13,7 @@
             <%= link_to teacher.name, user_path(User.find(teacher.id)) %>
 					</div>
 					<div class="profile-usertitle-job">
-            <%= teacher.title %>
+            <%= teacher.find_rate %>$ per hour
 					</div>
 				</div>
 				<div class="profile-userbuttons">
@@ -30,6 +30,11 @@
 							<a href="#">
 							<i class="glyphicon glyphicon-envelope"></i>
               <%= teacher.email %> </a>
+						</li>
+            <li>
+							<a href="#">
+							<i class="glyphicon glyphicon-book"></i>
+              <%= teacher.all_subjects %> </a>
 						</li>
 					</ul>
 				</div>

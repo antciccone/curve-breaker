@@ -14,7 +14,10 @@ class Admin::UsersController < ApplicationController
 
   def show
     if Teacher.find_by_email(current_user.email).users.pluck(:id).include?(params[:id].to_i)
-    @user  = User.find(params[:id])
+      @user  = User.find(params[:id])
+      @lesson = Lesson.new
+    else
+      redirect_to user_path(current_user)
     end
   end
 

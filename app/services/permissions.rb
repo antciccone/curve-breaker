@@ -31,6 +31,7 @@ class Permissions
     def teacher_permissions
       return true if controller == "users" && action.in?(%(show edit update))
       return true if controller == "admin/users" && action.in?(%w(show))
+      return true if controller == "lessons" && action.in?(%(create new))
     end
 
     def guest_permissions
