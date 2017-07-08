@@ -9,32 +9,38 @@
 
           <thead>
             <tr>
-              <td colspan="5">Teacher <%= teacher.name %></td>
+              <td colspan="6">Teacher: <%= teacher.name %> | Rate: <%= teacher.find_rate %>$ an hour
+              </td>
             </tr>
               <tr>
                   <th>Student Name</th>
                   <th>Email</th>
                   <th>Grade</th>
-                  <th>Edit</th>
                   <th>Delete</th>
+                  <th>Status</th>
               </tr>
           </thead>
-          <% teacher.users.each do |student|  %>
           <tbody>
+            <% teacher.users.each do |student|  %>
               <tr>
                   <td><%= student.name %></td>
-                  <td><%= student.email %></td>
+                  <td id="<%=student.find_pair(teacher)%>"><%= student.email %></td>
                   <td><%= student.grade %></td>
-                  <td>Edit</td>
                   <td>Delete</td>
+                  <td>
+                    <% if student.pair_status(teacher) == "active" %>
+                    <input id="off-on" type="checkbox" data-on="Active" data-off="Not Active" checked data-toggle="toggle" data-size="mini">
+                    <% else %>
+                    <input id="on-off" type="checkbox" data-on="Active" data-off="Not Active" data-toggle="toggle" data-size="mini">
+                    <% end %>
+                  </td>
               </tr>
               <% end %>
           </tbody>
       </table>
     </div>
-
-    </div>
     <% end %>
+    </div>
   </div>
 
 </div>

@@ -10,14 +10,11 @@
 				</div>
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">
-            <%= link_to teacher.name, user_path(User.find(teacher.id)) %>
+            <%= teacher.name %>(link to teachers show)
 					</div>
 					<div class="profile-usertitle-job">
-            <%= teacher.title %>
+            <%= teacher.find_rate %>$ per hour
 					</div>
-				</div>
-				<div class="profile-userbuttons">
-					<center><button type="button" class="btn btn-success btn-sm">Students</button></center>
 				</div>
 				<div class="profile-usermenu">
 					<ul class="nav">
@@ -30,6 +27,11 @@
 							<a href="#">
 							<i class="glyphicon glyphicon-envelope"></i>
               <%= teacher.email %> </a>
+						</li>
+            <li>
+							<a href="#">
+							<i class="glyphicon glyphicon-book"></i>
+              <%= teacher.all_subjects %> </a>
 						</li>
 					</ul>
 				</div>

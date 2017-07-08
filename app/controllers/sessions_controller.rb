@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user and @user.authenticate(params[:session][:password_digest])
       session[:user_id] = @user.id
-      redirect_to admin_dashboard_index_path
+      redirect_to user_path(@user) if @user.roles.pluck(:name).exclude?('super-admin')
+      redirect_to admin_dashboard_index_path if @user.roles.pluck(:name).include?('super-admin')
     else
       redirect_to login_path
     end

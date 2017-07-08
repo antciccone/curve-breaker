@@ -434,7 +434,7 @@ table.dataTable thead .sorting:after {
 }
 
 .glyphicon.arrow:before {
-    content: "\e079"; 
+    content: "\e079";
 }
 
 .active > a > .glyphicon.arrow:before {
@@ -646,4 +646,8 @@ table.dataTable thead .sorting:after {
 }
 .fa-inverse {
   color: #ffffff;
+}
+
+.form-control {
+  height: 33px !important; 
 }

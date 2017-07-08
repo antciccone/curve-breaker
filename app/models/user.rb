@@ -17,4 +17,20 @@ class User < ApplicationRecord
   def teacher?
     roles.exists?(name: "teacher")
   end
+
+  def find_teacher
+    Teacher.find_by_email(self.email)
+  end
+
+  def pair_status(teacher)
+    teacher_students.find_by(teacher_id: teacher.id).status
+  end
+
+  def find_teacher_lessons(teacher)
+    lessons.where(teacher_id: Teacher.find_by_email(teacher.email).id)
+  end
+
+  def find_pair(teacher)
+    teacher_students.find_by(teacher_id: teacher.id).id
+  end
 end

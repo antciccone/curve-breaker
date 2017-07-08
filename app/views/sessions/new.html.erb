@@ -1,35 +1,12 @@
-<%= render partial: 'shared/nav' %>
-<div id="page-wrapper">
+<%= render partial: 'shared/logged_in_nav' %>
+<div class="page-wrapper" style="padding-top:50px">
   <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password_digest %>
-      <%= f.password_field :password_digest, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+<div class="form">
+  <form class="register-form">
+    <%= f.text_field :email, placeholder: "email" %>
+    <%= f.password_field :password_digest, placeholder: "Password" %>
+  </form>
+  <%= f.submit "Login" %>
+  <% end %>
 </div>
-
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<%= render partial: 'shared/footer' %>
+</div>

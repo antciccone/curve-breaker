@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616181123) do
+ActiveRecord::Schema.define(version: 20170627215615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20170616181123) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "teacher_id"
+    t.string   "length"
+    t.text     "homework"
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id", using: :btree
     t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree
   end
 
@@ -46,11 +50,31 @@ ActiveRecord::Schema.define(version: 20170616181123) do
     t.index ["user_id"], name: "index_scores_on_user_id", using: :btree
   end
 
+  create_table "study_guides", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["user_id"], name: "index_study_guides_on_user_id", using: :btree
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.index ["teacher_id"], name: "index_subjects_on_teacher_id", using: :btree
+  end
+
   create_table "teacher_students", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "status"
     t.index ["teacher_id"], name: "index_teacher_students_on_teacher_id", using: :btree
     t.index ["user_id"], name: "index_teacher_students_on_user_id", using: :btree
   end
@@ -59,7 +83,6 @@ ActiveRecord::Schema.define(version: 20170616181123) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,10 +97,14 @@ ActiveRecord::Schema.define(version: 20170616181123) do
     t.string   "address"
     t.string   "phone"
     t.string   "status"
+    t.string   "rate"
   end
 
+  add_foreign_key "lessons", "teachers"
   add_foreign_key "lessons", "users"
   add_foreign_key "roles", "users"
+  add_foreign_key "study_guides", "users"
+  add_foreign_key "subjects", "teachers"
   add_foreign_key "teacher_students", "teachers"
   add_foreign_key "teacher_students", "users"
 end
