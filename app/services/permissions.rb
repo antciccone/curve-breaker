@@ -1,6 +1,7 @@
 class Permissions
   def initialize(user, controller, action)
-    @user = user || User.new
+    # @user = user || User.new
+    @user = user
     @controller = controller
     @action = action
   end
