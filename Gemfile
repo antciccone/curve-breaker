@@ -27,6 +27,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'paperclip'
 end
 
 group :test do

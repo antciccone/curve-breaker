@@ -14,11 +14,7 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i>Hello <%= current_user.name %></a>
                     </li>
-                    <li><a href=""><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a data-method="delete"><%=link_to "Logout", logout_path, method: :delete %></a>
-                    </li>
+                    <li><a href="/logout" data-method="delete"><span>Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -43,13 +39,13 @@
                         <a href="/admin/teachers"><i class="fa fa-users fa-fw"></i> Staff</a>
                     </li>
                     <li>
-                        <a href="/admin/users/new"><i class="fa fa-plus fa-fw"></i> Create Student/Teacher Login</a>
+                      <a href="/admin/current-pairings"><i class="fa fa-address-book fa-fw"></i>Current Pairings</a>
                     </li>
                     <li>
                         <a href="/admin/pairing"><i class="fa fa-edit fa-fw"></i>Pair a Teacher & Student</a>
                     </li>
                     <li>
-                        <a href="/admin/current-pairings"><i class="fa fa-address-book fa-fw"></i>Current Pairings</a>
+                      <a href="/admin/users/new"><i class="fa fa-plus fa-fw"></i> Create Student/Teacher Login</a>
                     </li>
                 </ul>
             </div>

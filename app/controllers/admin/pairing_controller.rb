@@ -13,4 +13,19 @@ class Admin::PairingController< ApplicationController
   def current_pairings
     @teachers = Teacher.left_joins(:users).group(:id).order('COUNT(users.id) DESC')
   end
+
+  def update
+    @teacher_student = TeacherStudent.find(params[:id])
+    change_status(@teacher_student)
+  end
+
+  private
+
+  def change_status(ts)
+    if ts.status == "active"
+      ts.update(status: "not-active")
+    else
+      ts.update(status: "active")
+    end
+  end
 end

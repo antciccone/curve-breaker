@@ -11,9 +11,22 @@
       <a class="navbar-brand" href="#"><img class="curve-logo" src="http://curvebreakerstestprep.com/assets/images/logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout" data-method="delete"><span>Hi <%= current_user.name %></span> | Logout</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+
+                  <% if current_user %>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i>Hello <%= current_user.name %></a>
+                    </li>
+                    <li><a href="/logout" data-method="delete"><span> Logout</a></li>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+                    <% end %>
+    </div>
+  </div>
 </nav>

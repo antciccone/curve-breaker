@@ -3,12 +3,27 @@ $(document).ready(function() {
   $('#create-match').on("click", function(){
     findChecked()
   })
+
   $('.search-student').on('keyup', function(){
     searchStudentPairing(this)
   })
 
   $('.search-teacher').on('keyup', function(){
     searchTeacherPairing(this)
+  })
+
+  $('#on-off').on("change", function() {
+    debugger
+    var pair = this.parentElement.parentElement.parentElement.children[1].id
+    axios.put('/admin/pairing/' + pair);
+    window.location.href = 'current-pairings';
+  })
+
+  $('#off-on').on("change", function() {
+    debugger
+    var pair = this.parentElement.parentElement.parentElement.children[1].id
+    axios.put('/admin/pairing/' + pair);
+    window.location.href = 'current-pairings';
   })
 
 })
@@ -42,7 +57,6 @@ function searchStudentPairing(input) {
     }
   }
 }
-
 
 function findChecked(){
   var student = $('.form-check-input:checked')[0]

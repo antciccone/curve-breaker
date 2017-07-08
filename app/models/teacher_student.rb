@@ -17,5 +17,4 @@ class TeacherStudent < ApplicationRecord
   def find_grade
     User.find(id).grade
   end
-
 end

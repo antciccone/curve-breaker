@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def find_teacher_lessons(teacher)
     lessons.where(teacher_id: Teacher.find_by_email(teacher.email).id)
   end
+
+  def find_pair(teacher)
+    teacher_students.find_by(teacher_id: teacher.id).id
+  end
 end
