@@ -24,13 +24,15 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :grade, :address, :phone, :status)
+    params.require(:user).permit(:parent_name, :parent_email, :parent_number, :name, :email, :password, :password_confirmation, :grade, :address, :phone, :status)
   end
 
   def create_role(user)
     if params[:user][:role] == "teacher"
       user.roles.create(name: 'teacher')
       Teacher.create(name: params[:user][:name], email: params[:user][:email], phone: params[:user][:phone])
+    else
+      true
     end
   end
 end

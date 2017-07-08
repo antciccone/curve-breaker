@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627215615) do
+ActiveRecord::Schema.define(version: 20170708152104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,9 @@ ActiveRecord::Schema.define(version: 20170627215615) do
     t.string   "phone"
     t.string   "status"
     t.string   "rate"
+    t.string   "parent_name"
+    t.string   "parent_number"
+    t.string   "parent_email"
   end
 
   add_foreign_key "lessons", "teachers"
