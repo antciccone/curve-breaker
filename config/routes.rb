@@ -6,10 +6,11 @@ Rails.application.routes.draw do
     resources :student, only: [:show, :new]
     resources :teachers, only: [:index]
     resources :users, only: [:new, :create, :show]
-    resources :pairing, only: [:index, :new, :create, :update, :destroy, :show]
+    resources :pairing
   end
 
   get '/admin/current-pairings', to: 'admin/pairing#current_pairings'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -1,4 +1,4 @@
-class Admin::PairingController< ApplicationController
+class Admin::PairingController < ApplicationController
 
   def index
     @teachers = Teacher.all
@@ -17,6 +17,14 @@ class Admin::PairingController< ApplicationController
   def update
     @teacher_student = TeacherStudent.find(params[:id])
     change_status(@teacher_student)
+    redirect_to admin_current_pairings_path
+  end
+
+  def destroy
+    #do i want to destory the pairing. need to ask nick. Maybe retire it as a status?
+    @ts = TeacherStudent.find(params[:id])
+    @ts.destroy
+    redirect_to admin_current_pairings_path
   end
 
   private

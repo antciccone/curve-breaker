@@ -353,3 +353,11 @@ float: right;*/
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
 }
+
+/*#admin/users show */
+
+#tutoring > div > div > div > article.timeline-entry.begin > div > div {
+  cursor: pointer;
+}
+
+/*testing*/

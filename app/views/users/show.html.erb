@@ -8,11 +8,11 @@
          <label  href="#account" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
            Account information
          </label>
-         <label href="#study" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
-             Study Guides
+         <label href="#my_scores" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+           My Scores
          </label>
          <label  href="#education" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
-            Something else?
+            Tutoring Sessions | Homework
          </label>
          <label href="#something" data-toggle="tab"  class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;">
            Account information
@@ -20,11 +20,32 @@
      </div>
  </div>
    <div id="myTabContent" class="tab-content">
-   <div  role="tabpanel" class="tab-pane" id="tutoring">
-     this is for turoeing hours
+   <div  role="tabpanel" class="tab-pane" id="education">
+     
    </div>
-   <div  role="tabpanel" class="tab-pane" id="study">
-     <p class="text-center">Study Guides</p>
+   <div  role="tabpanel" class="tab-pane" id="my_scores">
+     <div class="table-responsive">
+       <table class="table table-bordered table-hover table-striped">
+         <thead>
+           <tr>
+             <th>ACT Score</th>
+             <th>SAT Score</th>
+             <th>SAT Math</th>
+             <th>PSAT English</th>
+           </tr>
+         </thead>
+         <tbody>
+           <% current_user.scores.each do |score| %>
+           <tr>
+             <td> <%= current_user.act %></td>
+             <td> <%= current_user.sat %></td>
+             <td> <%= current_user.sat_math %></td>
+             <td> <%= current_user.sat %></td>
+           </tr>
+           <% end %>
+         </tbody>
+       </table>
+     </div>
    </div>
     <div  role="tabpanel" class="tab-pane active" id="account">
       <div class="row">

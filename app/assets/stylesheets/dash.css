@@ -649,7 +649,7 @@ table.dataTable thead .sorting:after {
 }
 
 .form-control {
-  height: 33px !important;
+  height: 33px;
 }
 
 #user_role {

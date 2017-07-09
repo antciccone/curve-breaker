@@ -26,12 +26,14 @@
                   <td><%= student.name %></td>
                   <td id="<%=student.find_pair(teacher)%>"><%= student.email %></td>
                   <td><%= student.grade %></td>
-                  <td>Delete</td>
+                  <td> <%= link_to "Delete", admin_pairing_path(student.find_pair(teacher)), method: :delete %> </td>
                   <td>
                     <% if student.pair_status(teacher) == "active" %>
-                    <input id="off-on" type="checkbox" data-on="Active" data-off="Not Active" checked data-toggle="toggle" data-size="mini">
+                    <%= link_to "", admin_pairing_path(student.find_pair(teacher)), method: :put, :class=> "fa fa-toggle-on fa-2x" %>
+                    <!-- <input id="off-on" type="checkbox" data-on="Active" data-off="Not Active" data-toggle="toggle" data-size="mini"> -->
                     <% else %>
-                    <input id="on-off" type="checkbox" data-on="Active" data-off="Not Active" data-toggle="toggle" data-size="mini">
+                    <%= link_to "", admin_pairing_path(student.find_pair(teacher)), method: :put, :class=> "fa fa-toggle-off fa-2x" %>
+                    <!-- <input id="on-off" type="checkbox" data-on="Active" data-off="Not Active" data-toggle="toggle" data-size="mini"> -->
                     <% end %>
                   </td>
               </tr>

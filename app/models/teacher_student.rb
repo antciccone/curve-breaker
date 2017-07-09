@@ -3,18 +3,18 @@ class TeacherStudent < ApplicationRecord
   belongs_to :teacher
 
   def find_id
-    User.find(id).id
+    User.find(user_id).id
   end
 
   def find_name
-    User.find(id).name
+    User.find(user_id).name
   end
 
   def find_email
-    User.find(id).email
+    User.find(user_id).email
   end
 
   def find_grade
-    User.find(id).grade
+    User.find(user_id).grade
   end
 end

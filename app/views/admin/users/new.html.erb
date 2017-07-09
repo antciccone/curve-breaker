@@ -36,6 +36,7 @@
             <%= f.text_field :parent_number, placeholder: "Parent number" %>
             <%= f.text_field :parent_email, placeholder: "Parent email" %>
             <%= f.select :role, ['student'] %>
+            <%= f.select :status, ['past', 'lead', 'current'], :selected => "current"   %>
           </form>
             <%= f.submit "Create Account" %>
             <% end %>

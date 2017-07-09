@@ -110,7 +110,6 @@
                             <th>Student Name</th>
                             <th>Email</th>
                             <th>Grade</th>
-                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -119,7 +118,6 @@
                             <td><%= link_to student.find_name, admin_user_path(student.find_id) %></td>
                             <td><%= student.find_email %></td>
                             <td><%= student.find_grade %></td>
-                            <td>Edit</td>
                             <td>Delete</td>
                         </tr>
                     </tbody>
