@@ -1,33 +1,4 @@
 <div role="tabpanel" class="tab-pane active" id="profile">
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Grade</th>
-            <th>Parent Name</th>
-            <th>Parent Email</th>
-            <th>Parent Number</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td> <%= @student.email %></td>
-            <td> <%= @student.address %></td>
-            <td> <%= @student.phone %></td>
-            <td> <%= @student.grade %></td>
-            <td> <%= @student.parent_name %></td>
-            <td> <%= @student.parent_email %></td>
-            <td> <%= @student.parent_number %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
     <div class="row">
         <div class="col-lg-12">
             <h3 class="page-header">Scores</h3>
@@ -45,14 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          <% @student.scores.each do |score| %>
+          <%# @student.scores.each do |score| %>
           <tr>
-            <td> <%= score.act %></td>
-            <td> <%= score.sat %></td>
-            <td> <%= score.sat_math %></td>
-            <td> <%= score.sat %></td>
+            <td> <%#= score.act %></td>
+            <td> <%#= score.sat %></td>
+            <td> <%#= score.sat_math %></td>
+            <td> <%#= score.sat %></td>
           </tr>
-          <% end %>
+          <%# end %>
         </tbody>
       </table>
     </div>
@@ -74,14 +45,14 @@
           </tr>
         </thead>
         <tbody>
-          <% @student.scores.each do |score| %>
+          <%# @student.scores.each do |score| %>
           <tr>
-            <td> <%= score.sat %></td>
-            <td> <%= score.act %></td>
-            <td> <%= score.sat_math %></td>
-            <td> <%= score.sat_english %></td>
+            <td> <%#= score.sat %></td>
+            <td> <%#= score.act %></td>
+            <td> <%#= score.sat_math %></td>
+            <td> <%#= score.sat_english %></td>
           </tr>
-          <% end %>
+          <%# end %>
         </tbody>
       </table>
     </div>

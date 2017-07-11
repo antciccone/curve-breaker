@@ -18,6 +18,10 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @sat = SatScore.new
+    @act = ActScore.new
+    @act_practice = ActPractice.new
+    @sat_practice = SatPractice.new
   end
 
   def edit

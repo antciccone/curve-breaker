@@ -1,82 +1,110 @@
-<h3>Total Tutoring Hours: 12</h3>
-<br>
-<div class="container">
+<div class="mainbody container-fluid">
     <div class="row">
-        <div class="timeline-centered">
-          <% @student.lessons.each do |lesson| %>
-          <article class="timeline-entry">
-              <div class="timeline-entry-inner">
-                  <div class="timeline-icon bg-success">
-                      <i class="entypo-feather"></i>
-                  </div>
-                  <div class="timeline-label">
-                      <h2>
-                          <a href="#">Teacher: Anthony Ciccone</a> |
-                          <span>Date: Tuesday, March 31st</span>
-                      </h2>
-                      <h5>Notes/Topics Covered</h5>
-                      <p><%= lesson.notes %>
-                      </p>
-                  </div>
-              </div>
-          </article>
-          <% end %>
-          <article class="timeline-entry">
-              <div class="timeline-entry-inner">
-                  <div class="timeline-icon bg-success">
-                      <i class="entypo-feather"></i>
-                  </div>
-                  <div class="timeline-label">
-                      <h2>
-                          <a href="#">Teacher: Anthony Ciccone</a> |
-                          <span>Date: Tuesday, March 31st</span>
-                      </h2>
-                      <h5>Notes/Topics Covered</h5>
-                      <p>sample notes go here
-                      </p>
-                  </div>
-              </div>
-          </article>
-          <article class="timeline-entry">
-              <div class="timeline-entry-inner">
-                  <div class="timeline-icon bg-success">
-                      <i class="entypo-feather"></i>
-                  </div>
-                  <div class="timeline-label">
-                      <h2>
-                          <a href="#">Teacher: Anthony Ciccone</a>|
-                          <span>Date: Tuesday, March 31st</span>
-                      </h2>
-                      <h5>Notes/Topics Covered</h5>
-                      <p>Sample notes go here
-                      </p>
-                  </div>
-              </div>
-          </article>
-          <article class="timeline-entry">
-              <div class="timeline-entry-inner">
-                  <div class="timeline-icon bg-success">
-                      <i class="entypo-feather"></i>
-                  </div>
-                  <div class="timeline-label">
-                      <h2>
-                          <a href="#">Teacher: Anthony Ciccone</a>
-                          <span>Date: Tuesday, March 31st</span>
-                      </h2>
-                      <h5>Notes/Topics Covered</h5>
-                      <p>Sample notes go here
-                      </p>
-                  </div>
-              </div>
-          </article>
-            <article class="timeline-entry begin">
-                <div class="timeline-entry-inner">
-                    <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
-                        <i class="entypo-flight"></i>
-                        +
+        <div style="padding-top:50px;"> </div>
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="media">
+                        <div align="center">
+                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                        </div>
+                        <div class="media-body">
+                           <center><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Edit My Info</button>
+                              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal2">Edit My Password</button>
+                           </center>
+                            <hr>
+                            <h3><strong><%= @student.name %></strong></h3>
+                            <hr>
+                            <h3><strong>Email</strong></h3>
+                            <p><%= @student.email %> </p>
+                            <hr>
+                            <h3><strong>Address</strong></h3>
+                            <p><%= @student.address %></p>
+                            <hr>
+                            <h3><strong>Phone</strong></h3>
+                            <p><%= @student.phone %></p>
+                            <hr>
+                            <h3><strong>Grade</strong></h3>
+                            <p> <%= @student.grade %></p>
+                            <h3><strong>Parent Name</strong></h3>
+                            <p> <%= @student.parent_name %></p>
+                            <h3><strong>Parent Email</strong></h3>
+                            <p> <%= @student.parent_email %></p>
+                            <h3><strong>Parent Number</strong></h3>
+                            <p> <%= @student.parent_number %></p>
+                        </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
+        <!-- #start of one post -->
+        <% @student.lessons.each do |lesson| %>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <!-- Simple post content example. -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        <a href="#">
+                            <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+                        </a>
+                    </div>
+                    <% if lesson.teacher != nil %>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at %>  </i></a></small></small></h4>
+                    <% end %>
+                    <span>
+                        <div class="navbar-right">
+                            <div class="dropdown">
+                                <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
+                                    <li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
+                                    <li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Ignore</a></li>
+                                    <li><a href="#"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Enable notifications for this post</a></li>
+                                    <li><a href="#"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Hide</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </span>
+                    <hr>
+                    <div class="post-content">
+                        <h4>Notes</h4>
+                       <p> <%= lesson.notes %> </p>
+                    </div>
+                    <div class="post-content">
+                        <h4>Homework</h4>
+                       <p> <%= lesson.homework %> </p>
+                    </div>
+                    <hr>
+                    <div>
+                        <div class="pull-right btn-group-xs">
+                            <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
+                            <a class="btn btn-default btn-xs"><i class="fa fa-retweet" aria-hidden="true"></i> Reshare</a>
+                            <a class="btn btn-default btn-xs"><i class="fa fa-comment" aria-hidden="true"></i> Comment</a>
+                        </div>
+                        <div class="pull-left">
+                            <p class="text-muted" style="margin-left:5px;"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> <%= lesson.length %> </p>
+                        </div>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class="media">
+                        <div class="pull-left">
+                            <a href="#">
+                                <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35px" height="35px" style="margin-left:3px; margin-right:-5px;">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #end of post -->
+        <% end %>
     </div>
 </div>

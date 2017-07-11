@@ -43,8 +43,8 @@
                           <div class="panel-body new-user">
                                   <%= form_for @lesson do |f| %>
                                   <div class="form-group">
-                                    <%= f.label :length, class: "control-lable col-md-4 required-field" %>
-                                    <%= f.text_field :length, class: "input-md textinput textInput form-control" %>
+                                    <%= f.label :length, class: "control-lable col-md-2 required-field" %>
+                                    <%= f.select :length, ['30 min', '60 min', '90 min', '120 min'], :selected => "current"   %>
                                   </div>
                                   <div class="form-group">
                                     <%= f.label :notes, class: "control-lable col-md-4 required-field" %>
