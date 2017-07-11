@@ -6,13 +6,13 @@
 <div class=" well well-sm  bg-white borderZero">
      <div class="btn-group date-block btn-group-justified font-small dropdown" data-toggle="buttons">
          <label  href="#account" data-toggle="tab" class="btn btn-default previous text-right font-small semiBold" title="Previous Day" style="font-size:12px;">
-           Account information
+           Account Info | Tutoring Sessions
          </label>
          <label href="#my_scores" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
            My Scores
          </label>
-         <label  href="#education" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
-            Tutoring Sessions | Homework
+         <label  href="#study-guides" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+           My Study Guides
          </label>
      </div>
  </div>
@@ -20,7 +20,6 @@
    <div  role="tabpanel" class="active tab-pane" id="account">
      <div class="mainbody container-fluid">
          <div class="row">
-             <div style="padding-top:50px;"> </div>
              <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
                  <div class="panel panel-default">
                      <div class="panel-body">
@@ -68,7 +67,7 @@
                                  <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
                              </a>
                          </div>
-                         <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at %>  </i></a></small></small></h4>
+                         <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at.strftime("%b %d. %Y") %>  </i></a></small></small></h4>
                          <span>
                              <div class="navbar-right">
                                  <div class="dropdown">
@@ -240,6 +239,9 @@
          </tbody>
        </table>
      </div>
+   </div>
+   <div  role="tabpanel" class="active tab-pane" id="study-guides">
+     I want pdf of study guides to go up
    </div>
  </div>
 </div>

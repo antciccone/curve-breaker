@@ -1,111 +1,148 @@
 <div role="tabpanel" class="tab-pane active" id="profile">
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td> <%= @user.email %></td>
-            <td> <%= @user.phone %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Scores</h3>
-        </div>
-    </div>
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>ACT Score</th>
-            <th>SAT Score</th>
-            <th>SAT Math</th>
-            <th>PSAT English</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.scores.each do |score| %>
-          <tr>
-            <td> <%= score.act %></td>
-            <td> <%= score.sat %></td>
-            <td> <%= score.sat_math %></td>
-            <td> <%= score.sat %></td>
-          </tr>
+  <div class="mainbody container-fluid">
+      <div class="row">
+          <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div class="media">
+                          <div align="center">
+                              <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                          </div>
+                          <div class="media-body">
+                             <center><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Add A Lesson</button>
+                             </center>
+                              <hr>
+                              <h3><strong><%= @user.name %></strong></h3>
+                              <hr>
+                              <h3><strong>Email</strong></h3>
+                              <p><%= @user.email %> </p>
+                              <hr>
+                              <h3><strong>Address</strong></h3>
+                              <p><%= @user.address %></p>
+                              <hr>
+                              <h3><strong>Phone</strong></h3>
+                              <p><%= @user.phone %></p>
+                              <hr>
+                              <h3><strong>Grade</strong></h3>
+                              <p> <%= @user.grade %></p>
+                              <h3><strong>Parent Name</strong></h3>
+                              <p> <%= @user.parent_name %></p>
+                              <h3><strong>Parent Email</strong></h3>
+                              <p> <%= @user.parent_email %></p>
+                              <h3><strong>Parent Number</strong></h3>
+                              <p> <%= @user.parent_number %></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- #start of one post -->
+          <% @user.find_teacher_lessons(current_user).each do |lesson| %>
+          <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+              <!-- Simple post content example. -->
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div class="pull-left">
+                          <a href="#">
+                              <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+                          </a>
+                      </div>
+                      <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at.strftime("%b %d. %Y")%> </i></a></small></small></h4>
+                      <span>
+                          <div class="navbar-right">
+                              <div class="dropdown">
+                                  <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                      <i class="fa fa-cog" aria-hidden="true"></i>
+                                      <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
+                                      <li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
+                                      <li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Ignore</a></li>
+                                      <li><a href="#"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Enable notifications for this post</a></li>
+                                      <li><a href="#"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Hide</a></li>
+                                      <li role="separator" class="divider"></li>
+                                      <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </span>
+                      <hr>
+                      <div class="post-content">
+                          <h4>Notes</h4>
+                         <p> <%= lesson.notes %> </p>
+                      </div>
+                      <div class="post-content">
+                          <h4>Homework</h4>
+                         <p> <%= lesson.homework %> </p>
+                      </div>
+                      <hr>
+                      <div>
+                          <div class="pull-right btn-group-xs">
+                              <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-retweet" aria-hidden="true"></i> Reshare</a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-comment" aria-hidden="true"></i> Comment</a>
+                          </div>
+                          <div class="pull-left">
+                              <p class="text-muted" style="margin-left:5px;"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> <%= lesson.length %> (session length)</p>
+                          </div>
+                          <br>
+                      </div>
+                      <hr>
+                      <div class="media">
+                          <div class="pull-left">
+                              <a href="#">
+                                  <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35px" height="35px" style="margin-left:3px; margin-right:-5px;">
+                              </a>
+                          </div>
+                          <div class="media-body">
+                              <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- #end of post -->
           <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Practice Scores</h3>
-        </div>
-    </div>
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>PSAT Math</th>
-            <th>SAT</th>
-            <th>SAT Math</th>
-            <th>SAT English</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.scores.each do |score| %>
-          <tr>
-            <td> <%= score.sat %></td>
-            <td> <%= score.act %></td>
-            <td> <%= score.sat_math %></td>
-            <td> <%= score.sat_english %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-lg-12">
-          <h3 class="page-header">Colleges</h3>
       </div>
   </div>
-<div class="row">
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover table-striped">
-      <thead>
-        <tr>
-          <th>College Name</th>
-          <th>SAT Scores Needed</th>
-          <th>PSAT Scored Needed</th>
-          <th>Applied?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> Dummy Data</td>
-          <td> Dummy Data</td>
-          <td> Dummy Data</td>
-          <td> Dummy Data</td>
-        </tr>
-        <tr>
-          <td> Dummy Data</td>
-          <td> Dummy Data</td>
-          <td> Dummy Data</td>
-          <td> Dummy Data</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add A Lesson</h4>
+            </div>
+            <div class="modal-body">
+              <div class="panel-body new-user">
+                      <%= form_for @lesson do |f| %>
+                      <div class="form-group">
+                        <%= f.label :length, class: "control-lable col-md-2 required-field" %>
+                        <%= f.select :length, ['30 min', '60 min', '90 min', '120 min'], :selected => "current"   %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :notes, class: "control-lable col-md-4 required-field" %>
+                        <%= f.text_area :notes, class: "input-md textinput textInput form-control", size: "5x5" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :homework, class: "control-lable col-md-4 required-field" %>
+                        <%= f.text_area :homework, class: "input-md textinput textInput form-control", size: "5x5" %>
+                      </div>
+                      <div class="">
+                        <%= f.hidden_field :teacher_id, :value => current_user.find_teacher.id %>
+                        <%= f.hidden_field :user_id, :value => @user.id %>
+                      </div>
+                        <div class="form-group">
+                          <%= f.submit class: "btn btn-success"%>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

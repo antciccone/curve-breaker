@@ -1,6 +1,5 @@
 <div class="mainbody container-fluid">
     <div class="row">
-        <div style="padding-top:50px;"> </div>
         <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -9,8 +8,7 @@
                             <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
                         </div>
                         <div class="media-body">
-                           <center><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Edit My Info</button>
-                              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal2">Edit My Password</button>
+                           <center><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Add a Lesson</button>
                            </center>
                             <hr>
                             <h3><strong><%= @student.name %></strong></h3>
@@ -49,7 +47,7 @@
                         </a>
                     </div>
                     <% if lesson.teacher != nil %>
-                    <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at %>  </i></a></small></small></h4>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at.strftime("%b %d. %Y") %>  </i></a></small></small></h4>
                     <% end %>
                     <span>
                         <div class="navbar-right">
@@ -106,5 +104,44 @@
         </div>
         <!-- #end of post -->
         <% end %>
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add A Lesson</h4>
+            </div>
+            <div class="modal-body">
+              <div class="panel-body new-user">
+                      <%= form_for @lesson do |f| %>
+                      <div class="form-group">
+                        <%= f.label :length, class: "control-lable col-md-2 required-field" %>
+                        <%= f.select :length, ['30 min', '60 min', '90 min', '120 min'], :selected => "current"   %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :notes, class: "control-lable col-md-4 required-field" %>
+                        <%= f.text_area :notes, class: "input-md textinput textInput form-control", size: "5x5" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :homework, class: "control-lable col-md-4 required-field" %>
+                        <%= f.text_area :homework, class: "input-md textinput textInput form-control", size: "5x5" %>
+                      </div>
+                      <div class="">
+                        <%#= f.hidden_field :teacher_id, :value => current_user.find_teacher.id %>
+                        <%= f.hidden_field :user_id, :value => @student.id %>
+                      </div>
+                        <div class="form-group">
+                          <%= f.submit class: "btn btn-success"%>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
