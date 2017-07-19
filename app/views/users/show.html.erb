@@ -20,7 +20,7 @@
    <div  role="tabpanel" class="active tab-pane" id="account">
      <div class="mainbody container-fluid">
          <div class="row">
-             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+             <div class="col-lg-3 col-md-3">
                  <div class="panel panel-default">
                      <div class="panel-body">
                          <div class="media">
@@ -58,6 +58,7 @@
              </div>
              <!-- #start of one post -->
              <% current_user.lessons.each do |lesson| %>
+             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
              <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                  <!-- Simple post content example. -->
                  <div class="panel panel-default">

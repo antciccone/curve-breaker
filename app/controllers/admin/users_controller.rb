@@ -30,7 +30,7 @@ class Admin::UsersController < ApplicationController
   def create_role(user)
     if params[:user][:role] == "teacher"
       user.roles.create(name: 'teacher')
-      Teacher.create(name: params[:user][:name], email: params[:user][:email], phone: params[:user][:phone])
+      Teacher.create(name: params[:user][:name], email: params[:user][:email], phone: params[:user][:phone], rate: params[:user][:rate])
     else
       true
     end

@@ -8,8 +8,15 @@
                             <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
                         </div>
                         <div class="media-body">
-                           <center><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Add a Lesson</button>
-                           </center>
+                             <div class="form-group">
+                              <label for="sel1">Current Status: <%= @student.status %>  </label>
+                              <select class="form-control" id="sel1">
+                                <option value='total' selected>Change Status</option>
+                                <option id="<%= @student.id %>">current</option>
+                                <option id="<%= @student.id %>">past</option>
+                                <option id="<%= @student.id %>">lead</option>
+                              </select>
+                            </div>
                             <hr>
                             <h3><strong><%= @student.name %></strong></h3>
                             <hr>
@@ -37,6 +44,7 @@
         </div>
         <!-- #start of one post -->
         <% @student.lessons.each do |lesson| %>
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs"></div>
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
