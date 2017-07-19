@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_many :roles
   has_many :teacher_students
   has_many :teachers, through: :teacher_students
+  has_many :sat_scores
+  has_many :act_practices
+  has_many :sat_practices
+  has_many :act_scores
+
 
   attr_reader :role
 

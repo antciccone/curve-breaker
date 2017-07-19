@@ -17,5 +17,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :lessons, only: [:new, :create, :edit, :update]
+  resources :sat_scores, only: [:create, :destroy]
+  resources :act_scores, only: [:create, :destroy]
+  resources :act_practices, only: [:create]
+  resources :sat_practices, only: [:create]
 
 end
