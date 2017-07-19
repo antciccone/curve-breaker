@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170719210809) do
+=======
+ActiveRecord::Schema.define(version: 20170717202305) do
+>>>>>>> 277462dce602ed2a89262bf0070ec1ac20821c03
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +71,19 @@ ActiveRecord::Schema.define(version: 20170719210809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sat_practices_on_user_id", using: :btree
+<<<<<<< HEAD
+=======
+  end
+
+  create_table "sat_scores", force: :cascade do |t|
+    t.string   "date"
+    t.string   "math"
+    t.string   "english"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sat_scores_on_user_id", using: :btree
+>>>>>>> 277462dce602ed2a89262bf0070ec1ac20821c03
   end
 
   create_table "sat_scores", force: :cascade do |t|
@@ -129,6 +146,10 @@ ActiveRecord::Schema.define(version: 20170719210809) do
   add_foreign_key "roles", "users"
   add_foreign_key "sat_practices", "users"
   add_foreign_key "sat_scores", "users"
+<<<<<<< HEAD
+=======
+  add_foreign_key "study_guides", "users"
+>>>>>>> 277462dce602ed2a89262bf0070ec1ac20821c03
   add_foreign_key "subjects", "teachers"
   add_foreign_key "teacher_students", "teachers"
   add_foreign_key "teacher_students", "users"

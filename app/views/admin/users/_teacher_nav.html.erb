@@ -14,8 +14,6 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i>Hello <%= current_user.name %></a>
                     </li>
-                    <li><a href=""><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
                     <li class="divider"></li>
                     <li><a data-method="delete"><%=link_to "Logout", logout_path, method: :delete %></a>
                     </li>

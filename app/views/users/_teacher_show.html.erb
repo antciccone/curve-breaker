@@ -48,7 +48,7 @@
                                     <a href="#"></a>
                                     <div class="information">
                                         <i class="glyphicon glyphicon-usd"></i>
-                                        <span id="rate" class="edit-profile" > <%= current_user.rate %> </span>
+                                        <span id="email" class="edit-profile" ><%= current_user.rate %></span>
                                     </div>
                                 </li>
                             </div>
@@ -78,10 +78,6 @@
                                     <div class="form-group">
                                       <%= f.label :phone, class: "control-lable col-md-4 required-field" %>
                                       <%= f.text_field :phone, class: "input-md textinput textInput form-control" %>
-                                    </div>
-                                    <div class="form-group">
-                                      <%= f.label :rate, class: "control-lable col-md-4 required-field" %>
-                                      <%= f.text_field :rate, class: "input-md textinput textInput form-control" %>
                                     </div>
                                     <div class="form-group">
                                       <%= f.submit class: "btn btn-warning"%>

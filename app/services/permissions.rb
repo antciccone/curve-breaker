@@ -40,5 +40,9 @@ class Permissions
       return true if controller == "users" && action.in?(%w(new create show edit update))
       return true if controller == "admin/pairing" && action.in?(%w(create))
       return true if controller == "admin/pairing" && action.in?(%w(update))
+      return true if controller == "sat_scores" && action.in?(%w(create))
+      return true if controller == "act_scores" && action.in?(%w(create))
+      return true if controller == "sat_practices" && action.in?(%w(create))
+
     end
 end
