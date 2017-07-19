@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708152104) do
+ActiveRecord::Schema.define(version: 20170719210809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "act_practices", force: :cascade do |t|
+    t.string   "date"
+    t.string   "math"
+    t.string   "english"
+    t.string   "science"
+    t.string   "reading"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_act_practices_on_user_id", using: :btree
+  end
+
+  create_table "act_scores", force: :cascade do |t|
+    t.string   "date"
+    t.string   "math"
+    t.string   "english"
+    t.string   "reading"
+    t.string   "science"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_act_scores_on_user_id", using: :btree
+  end
 
   create_table "lessons", force: :cascade do |t|
     t.text     "notes"
@@ -35,30 +59,24 @@ ActiveRecord::Schema.define(version: 20170708152104) do
     t.index ["user_id"], name: "index_roles_on_user_id", using: :btree
   end
 
-  create_table "scores", force: :cascade do |t|
-    t.string   "act"
-    t.string   "sat"
-    t.string   "practice_sat"
-    t.string   "practice_act"
+  create_table "sat_practices", force: :cascade do |t|
+    t.string   "date"
+    t.string   "math"
+    t.string   "english"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "sat_math"
-    t.string   "sat_english"
-    t.string   "psat_math"
-    t.string   "psat_english"
-    t.index ["user_id"], name: "index_scores_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sat_practices_on_user_id", using: :btree
   end
 
-  create_table "study_guides", force: :cascade do |t|
+  create_table "sat_scores", force: :cascade do |t|
+    t.string   "date"
+    t.string   "math"
+    t.string   "english"
     t.integer  "user_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["user_id"], name: "index_study_guides_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sat_scores_on_user_id", using: :btree
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -85,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170708152104) do
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "rate"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,10 +122,13 @@ ActiveRecord::Schema.define(version: 20170708152104) do
     t.string   "parent_email"
   end
 
+  add_foreign_key "act_practices", "users"
+  add_foreign_key "act_scores", "users"
   add_foreign_key "lessons", "teachers"
   add_foreign_key "lessons", "users"
   add_foreign_key "roles", "users"
-  add_foreign_key "study_guides", "users"
+  add_foreign_key "sat_practices", "users"
+  add_foreign_key "sat_scores", "users"
   add_foreign_key "subjects", "teachers"
   add_foreign_key "teacher_students", "teachers"
   add_foreign_key "teacher_students", "users"
