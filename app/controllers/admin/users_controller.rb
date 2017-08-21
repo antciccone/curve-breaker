@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
       user.roles.create(name: 'teacher')
       Teacher.create(name: params[:user][:name], email: params[:user][:email], phone: params[:user][:phone], rate: params[:user][:rate])
     else
-      true
+      user.roles.create(name: 'student')
     end
   end
 end

@@ -44,13 +44,13 @@
                                         <span id="email" class="edit-profile" ><%= current_user.email %></span>
                                     </div>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="#"></a>
                                     <div class="information">
                                         <i class="glyphicon glyphicon-usd"></i>
                                         <span id="email" class="edit-profile" ><%= current_user.rate %></span>
                                     </div>
-                                </li>
+                                </li> -->
                             </div>
                         </ul>
                     </div>
@@ -93,6 +93,7 @@
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="students">
+          <div class="container-fluid">
             <div class="row">
               <% Teacher.find_by_email(current_user.email).teacher_students.each do |student|%>
               <div class="col-md-6 current-pairing-row" style="padding: 2px;">
@@ -106,7 +107,7 @@
                             <th>Student Name</th>
                             <th>Email</th>
                             <th>Grade</th>
-                            <th>Delete</th>
+                            <!-- <th>Delete</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -114,7 +115,7 @@
                             <td><%= link_to student.find_name, admin_user_path(student.find_id) %></td>
                             <td><%= student.find_email %></td>
                             <td><%= student.find_grade %></td>
-                            <td>Delete</td>
+                            <!-- <td>Delete</td> -->
                         </tr>
                     </tbody>
                 </table>
@@ -123,7 +124,7 @@
               </div>
               <% end %>
             </div>
-
+          </div>
         </div>
     </div>
 </div>

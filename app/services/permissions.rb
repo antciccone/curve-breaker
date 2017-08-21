@@ -26,6 +26,7 @@ class Permissions
       return true if controller == "admin/users" && action.in?(%w(new create show))
       return true if controller == "admin/pairing" && action.in?(%w(index destroy update new create show current_pairings))
       return true if controller == "users" && action.in?(%(show edit update))
+      return true if controller == "contacted" && action?(%(create edit update))
     end
 
     def teacher_permissions
@@ -43,6 +44,7 @@ class Permissions
       return true if controller == "sat_scores" && action.in?(%w(create))
       return true if controller == "act_scores" && action.in?(%w(create))
       return true if controller == "sat_practices" && action.in?(%w(create))
-
+      return true if controller == "admin/temperatures" && action.in?(%(create edit update))
+      return true if controller == "contacted" && action.in?(%(create edit update))
     end
 end

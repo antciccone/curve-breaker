@@ -123,21 +123,43 @@
                      <th>Name</th>
                      <th>Email</th>
                      <th>Phone</th>
-                     <th>Address</th>
+                     <!-- <th>Address</th> -->
                      <th>Grade</th>
                      <th>Status</th>
+                     <th>Temperate</th>
+                     <th>Last Contacted (click to edit)</th>
                  </tr>
              </thead>
              <tbody>
                <% @user.each do |student| %>
-                 <tr>
-                     <td class="student-name"><%= link_to student.name, admin_student_path(student) %></td>
-                     <td><%= student.email %></td>
-                     <td>9735257892</td>
-                     <td><%= student.address%></td>
-                     <td><%= student.grade %></td>
-                     <td><%= student.status %></td>
-                 </tr>
+                   <tr>
+                       <td class="student-name"><%= link_to student.name, admin_student_path(student) %></td>
+                       <td><%= student.email %></td>
+                       <td>9735257892</td>
+                       <!-- <td><%= student.address%></td> -->
+                       <td><%= student.grade %></td>
+                       <td><%= student.status %></td>
+                       <td id="<%= student.id %>"><div class="form-group">
+                        <select class="form-control" id="temp-select">
+                          <% if student.temperatures.last != nil %>
+                          <option selected="selected"> <%= student.temperatures.last.temp %> </option>
+                          <option>hot</option>
+                          <option>warm</option>
+                          <option>cold</option
+                            <% else %>
+                          <option selected="selected"></option>
+                          <option>hot</option>
+                          <option>warm</option>
+                          <option>cold</option
+                            <% end %>
+                        </select>
+                      </div></td>
+                       <% if student.contacteds.last != nil %>
+                       <td class="<%= student.id  %>" id="contacted" contenteditable="true"> <%=student.contacteds.last.notes%> | <%= student.contacteds.last.created_at.strftime("%b %d, %Y") %></td>
+                       <% else %>
+                       <td class="<%= student.id  %>" id="contacted" contenteditable="true" >You have not contacted this student</td>
+                       <% end  %>
+                   </tr>
                  <% end %>
              </tbody>
          </table>

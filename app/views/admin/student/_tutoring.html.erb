@@ -5,9 +5,11 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                            <!-- <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px"> -->
                         </div>
                         <div class="media-body">
+                          <h3><strong><%= @student.name %></strong></h3>
+                          <hr>
                              <div class="form-group">
                               <label for="sel1">Current Status: <%= @student.status %>  </label>
                               <select class="form-control" id="sel1">
@@ -17,8 +19,6 @@
                                 <option id="<%= @student.id %>">lead</option>
                               </select>
                             </div>
-                            <hr>
-                            <h3><strong><%= @student.name %></strong></h3>
                             <hr>
                             <h3><strong>Email</strong></h3>
                             <p><%= @student.email %> </p>
@@ -51,14 +51,14 @@
                 <div class="panel-body">
                     <div class="pull-left">
                         <a href="#">
-                            <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+                            <!-- <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;"> -->
                         </a>
                     </div>
                     <% if lesson.teacher != nil %>
                     <h4><a href="#" style="text-decoration:none;"><strong>Teacher: <%= lesson.teacher.name %> </strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> <%= lesson.created_at.strftime("%b %d. %Y") %>  </i></a></small></small></h4>
                     <% end %>
                     <span>
-                        <div class="navbar-right">
+                        <!-- <div class="navbar-right">
                             <div class="dropdown">
                                 <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <i class="fa fa-cog" aria-hidden="true"></i>
@@ -73,7 +73,7 @@
                                     <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </span>
                     <hr>
                     <div class="post-content">
@@ -86,18 +86,18 @@
                     </div>
                     <hr>
                     <div>
-                        <div class="pull-right btn-group-xs">
+                        <!-- <div class="pull-right btn-group-xs">
                             <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
                             <a class="btn btn-default btn-xs"><i class="fa fa-retweet" aria-hidden="true"></i> Reshare</a>
                             <a class="btn btn-default btn-xs"><i class="fa fa-comment" aria-hidden="true"></i> Comment</a>
-                        </div>
+                        </div> -->
                         <div class="pull-left">
                             <p class="text-muted" style="margin-left:5px;"><i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> <%= lesson.length %> </p>
                         </div>
                         <br>
                     </div>
                     <hr>
-                    <div class="media">
+                    <!-- <div class="media">
                         <div class="pull-left">
                             <a href="#">
                                 <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35px" height="35px" style="margin-left:3px; margin-right:-5px;">
@@ -106,7 +106,7 @@
                         <div class="media-body">
                             <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719210809) do
+ActiveRecord::Schema.define(version: 20170821164539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20170719210809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_act_scores_on_user_id", using: :btree
+  end
+
+  create_table "contacteds", force: :cascade do |t|
+    t.text     "notes",      default: "Has not been contacted"
+    t.integer  "user_id"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.index ["user_id"], name: "index_contacteds_on_user_id", using: :btree
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -106,6 +114,14 @@ ActiveRecord::Schema.define(version: 20170719210809) do
     t.string   "rate"
   end
 
+  create_table "temperatures", force: :cascade do |t|
+    t.string   "temp"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_temperatures_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -124,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170719210809) do
 
   add_foreign_key "act_practices", "users"
   add_foreign_key "act_scores", "users"
+  add_foreign_key "contacteds", "users"
   add_foreign_key "lessons", "teachers"
   add_foreign_key "lessons", "users"
   add_foreign_key "roles", "users"
@@ -132,4 +149,5 @@ ActiveRecord::Schema.define(version: 20170719210809) do
   add_foreign_key "subjects", "teachers"
   add_foreign_key "teacher_students", "teachers"
   add_foreign_key "teacher_students", "users"
+  add_foreign_key "temperatures", "users"
 end

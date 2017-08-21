@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :teachers, only: [:index]
     resources :users, only: [:new, :create, :show]
     resources :pairing
+    resources :temperatures, only: [:create]
+
   end
 
   get '/admin/current-pairings', to: 'admin/pairing#current_pairings'
@@ -21,5 +23,6 @@ Rails.application.routes.draw do
   resources :act_scores, only: [:create, :destroy]
   resources :act_practices, only: [:create]
   resources :sat_practices, only: [:create]
+  resources :contacted, only: [:create]
 
 end

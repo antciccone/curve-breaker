@@ -11,6 +11,7 @@ class Seed
       address: "#{Faker::Address.street_name}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip}",
       status: ["lead", "current", "past"].sample
       )
+      user.roles.create(name: 'student')
     end
   end
 end

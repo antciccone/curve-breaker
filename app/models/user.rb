@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   has_many :scores
-  has_many :lessons
+  has_many :lessons, -> {order(created_at: :desc)}
   has_many :roles
   has_many :teacher_students
   has_many :teachers, through: :teacher_students
@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :act_practices
   has_many :sat_practices
   has_many :act_scores
+  has_many :contacteds
+  has_many :temperatures
 
 
   attr_reader :role
