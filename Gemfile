@@ -17,6 +17,10 @@ gem 'figaro'
 gem 'serializer'
 gem 'faraday'
 gem 'faker'
+gem "paperclip", "~> 5.0.0"
+gem 'pdf-reader'
+
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -27,7 +31,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'database_cleaner'
-  gem 'paperclip'
 end
 
 group :test do

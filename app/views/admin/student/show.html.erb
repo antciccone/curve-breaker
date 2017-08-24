@@ -14,6 +14,9 @@
            <label href="#study" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
                Study Guides
            </label>
+           <label href="#reports" data-toggle="tab" class="btn date-buttons btn-default text-right semiBold" style="font-size:12px;" >
+             Reports
+           </label>
        </div>
    </div>
      <div id="myTabContent" class="tab-content">
@@ -24,9 +27,27 @@
        <%= render partial: 'admin/student/profile' %>
      </div>
      <div  role="tabpanel" class="tab-pane" id="study">
-       <h2>Current Study Guides</h2>
-
-     </div>
+       <div class="row">
+         <div class="col-lg-6">
+           <h2>Upload Study Guide</h2>
+           <%= form_for @attachment, url: admin_attachment_index_path, html: { multipart: true } do |form| %>
+           <%= form.file_field :avatar %>
+           <%= form.hidden_field :user_id, :value => @student.id %>
+           <%= form.hidden_field :name, :value => 'study' %>
+           <br>
+           <%= form.submit 'Upload Study Guide'%>
+           <% end %>
+         </div>
+         <div class="col-lg-6">
+           <h2>Study Guides</h2>
+           <ol>
+           <% @student.attachments.each do |a| %>
+           <li><%= link_to a.avatar_file_name, a.avatar.url %></li>
+           <% end %>
+         </ol>
+         </div>
+         </div>
+       </div>
      <div  role="tabpanel" class="tab-pane" id="contacted">
        <table class="table table-bordered table-hover table-striped">
            <thead>
@@ -44,6 +65,28 @@
                <% end %>
            </tbody>
        </table>
+     </div>
+     <div  role="tabpanel" class="tab-pane" id="reports">
+       <div class="row">
+         <div class="col-lg-6">
+           <h2>Upload Report</h2>
+           <%= form_for @attachment, url: admin_attachment_index_path, html: { multipart: true } do |form| %>
+           <%= form.file_field :avatar %>
+           <%= form.hidden_field :user_id, :value => @student.id %>
+           <%= form.hidden_field :name, :value => 'study' %>
+           <br>
+           <%= form.submit  "Upload Report"%>
+           <% end %>
+         </div>
+         <div class="col-lg-6">
+           <h2>Current Reports</h2>
+           <ol>
+           <% @student.attachments.where(name: 'report').each do |a| %>
+           <li><%= link_to a.avatar_file_name, a.avatar.url %></li>
+           <% end %>
+         </ol>
+         </div>
+         </div>
      </div>
    </div>
 </div>

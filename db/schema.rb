@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821164539) do
+ActiveRecord::Schema.define(version: 20170822173049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20170821164539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_act_scores_on_user_id", using: :btree
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "name"
+    t.index ["user_id"], name: "index_attachments_on_user_id", using: :btree
   end
 
   create_table "contacteds", force: :cascade do |t|
@@ -140,6 +152,7 @@ ActiveRecord::Schema.define(version: 20170821164539) do
 
   add_foreign_key "act_practices", "users"
   add_foreign_key "act_scores", "users"
+  add_foreign_key "attachments", "users"
   add_foreign_key "contacteds", "users"
   add_foreign_key "lessons", "teachers"
   add_foreign_key "lessons", "users"
