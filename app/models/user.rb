@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :act_scores
   has_many :contacteds
   has_many :temperatures
+  has_many :attachments
 
 
   attr_reader :role

@@ -27,6 +27,7 @@ class Permissions
       return true if controller == "admin/pairing" && action.in?(%w(index destroy update new create show current_pairings))
       return true if controller == "users" && action.in?(%(show edit update))
       return true if controller == "contacted" && action?(%(create edit update))
+      return true if controller == "admin/attachment" && action.in?(%(create))
     end
 
     def teacher_permissions

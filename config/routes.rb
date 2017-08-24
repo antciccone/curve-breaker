@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create, :show]
     resources :pairing
     resources :temperatures, only: [:create]
-
+    resources :attachment, only: [:create]
   end
 
   get '/admin/current-pairings', to: 'admin/pairing#current_pairings'
