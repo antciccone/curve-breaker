@@ -20,7 +20,7 @@
      </div>
  </div>
    <div id="myTabContent" class="tab-content">
-     <div  role="tabpanel" class="active tab-pane" id="reports">
+     <div  role="tabpanel" class="tab-pane" id="reports">
        <% current_user.attachments.where(name: 'report').each do |attachment| %>
        <ol>
          <li><%= link_to attachment.avatar_file_name, attachment.avatar.url, target: :_blank %></li>
@@ -251,7 +251,7 @@
        </table>
      </div>
    </div>
-   <div  role="tabpanel" class="active tab-pane" id="study-guides">
+   <div  role="tabpanel" class="tab-pane" id="study-guides">
      <% current_user.attachments.where(name: 'study').each do |attachment| %>
      <ol>
        <li><%= link_to attachment.avatar_file_name, attachment.avatar.url, target: :_blank %></li>
